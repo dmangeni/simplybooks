@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "795885189987",
+    "firebase_url": "https://simplybooks-676c4.firebaseio.com",
+    "project_id": "simplybooks-676c4",
+    "storage_bucket": "simplybooks-676c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795885189987:android:7c23ef9fbc4dfb30",
+        "android_client_info": {
+          "package_name": "com.simplybooks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "795885189987-r8bv72dhuvntbkli6t4e4eicajo1f3bp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.simplybooks",
+            "certificate_hash": "ea1822e48e9bb7e65c5366adc903234389e4ca3e"
+          }
+        },
+        {
+          "client_id": "795885189987-hjfk0g5q5f9teibknchn2l74qakvtqtm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBycrfM1sSLZF90LmfPFNUhPqulIDjFXts"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "795885189987-hjfk0g5q5f9teibknchn2l74qakvtqtm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
