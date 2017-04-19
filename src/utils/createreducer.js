@@ -1,10 +1,15 @@
+import { Map, fromJS } from 'immutable';
+
 export function createReducer(initial_state, handlers){
   return function reducer(state = initial_state, action){
+
+    let immutable_state = fromJS(state)
+
     if(handlers.hasOwnProperty(action.type)){
-      return handlers[action.type](state, action)
+      return handlers[action.type](immutable_state, action)
     }
     else{
-      return state
+      return immutable_state
     }
   }
 }

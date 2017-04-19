@@ -1,9 +1,12 @@
 import * as types from './types';
+import firebase from 'firebase';
 import database from './firebase_config';
+import { Actions } from 'react-native-router-flux';
+import {reset} from 'redux-form';
 
-export function setDatabase() {
+export function initializeDatabase(){
   return dispatch => {
-    dispatch(setDatabaseRequest())
+    dispatch(initializeDatabaseRequest())
     return database.ref('/').once('value', snapshot => {
       const data = snapshot.val();
 
@@ -18,47 +21,33 @@ export function setDatabase() {
         }
         database.ref('/').set(initial_state);
       }
-      dispatch(setDatabaseRequestFulfilled(data))
+
+      //Pass the database ref for storage into global state
+      let databaseRef = database.ref('/');
+      dispatch(initializeDatabaseFulfilled(databaseRef))
     })
     .catch((error) => {
       console.log(error);
-      dispatch(setDatabaseRequestRejected());
+      dispatch(initializeDatabaseFailure(error));
     });
   }
 }
 
-export function setDatabaseRequest(){
+export function initializeDatabaseRequest(){
   return {
-    type: types.SET_DATABASE_REQUESTED,
+    type: types.INITIALIZE_DATABASE_REQUEST,
   }
 }
-export function setDatabaseRequestFulfilled(data){
+export function initializeDatabaseFulfilled(data){
   return {
-    type: types.SET_DATABASE_FULFILLED,
+    type: types.INITIALIZE_DATABASE_SUCCESS,
     data
   }
 }
 
-export function setDatabaseRequestRejected(){
+export function initializeDatabaseFailure(){
   return {
-    type: types.SET_DATABASE_REJECTED,
+    type: types.INITIALIZE_DATABASE_FAILURE,
+    error
   }
-}
-
-//Called everytime the firebase ref changes.
-export function replaceConfig(config) {
-  return {
-    type: 'CONFIG_REPLACE',
-    value: config
-  };
-}
-
-//Start listening to changes on the firebase ref when the app boots
-function listenToConfigChanges() {
-  return (dispatch, getState) => {
-    let firebaseRef = lib.clone_object(getState());
-    firebaseRef.child('config').on('value', (snapshot) => {
-      dispatch(replaceConfig(snapshot.val()));
-    });
-  };
 }

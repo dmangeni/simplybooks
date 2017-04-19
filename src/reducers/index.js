@@ -1,8 +1,12 @@
 import {combineReducers} from 'redux'
-import { reducer as formReducer } from 'redux-form'
-import *as userReducer from './login';
+import *as login from './login'
+import * as routing from './navigation'
+import * as registration from './registration'
+import {reducer as formReducer} from 'redux-form'
 
 export default combineReducers(Object.assign({},
-  userReducer,
-  formReducer
+  routing,
+  registration,
+  login,
+  {form: formReducer},
 ));

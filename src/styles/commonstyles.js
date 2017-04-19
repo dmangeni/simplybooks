@@ -3,14 +3,11 @@ import { Platform, StyleSheet, Dimensions } from 'react-native';
 
 let {height, width} = Dimensions.get('window');
 
-const constants = {
-  actionColor: '#1e9c98',
-};
 
 const commonstyles =  StyleSheet.create({
   container:{
     flex: 1,
-    flexDirection: 'column',
+    padding: 10,
   },
   boxContainer:{
     flex: 1,
@@ -27,11 +24,12 @@ const commonstyles =  StyleSheet.create({
   textinputWithBorders:{
     textAlign: 'center',
     width: width * .7,
-    height:40,
+    height: Platform.OS == 'android' ? 40 : 20,
     borderWidth:2,
     margin: 5,
-    borderColor:'#ece9e1',
+    borderColor:'black',
     borderRadius: 15,
+    //color: 'black',
     //backgroundColor:'transparent',
   },
   button: {
@@ -42,6 +40,7 @@ const commonstyles =  StyleSheet.create({
     borderRadius: 20,
     padding: 5,
     //backgroundColor:'#1e9c98',
+    backgroundColor:'transparent',
   },
   buttonText:{
     alignSelf:'center',
@@ -56,8 +55,14 @@ const commonstyles =  StyleSheet.create({
   placeholder:{
     fontFamily:'monospace',
 
-  }
+  },
+  error:{
+    fontSize: 20,
+    alignSelf: 'center',
+    color: '#e62117',
+    paddingTop: 20,
+    paddingBottom: 10,
+  },
 });
 
 module.exports = commonstyles;
-module.exports.constants = constants;
