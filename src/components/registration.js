@@ -1,12 +1,16 @@
 //@flow
 import React, { Component, PropTypes } from 'react';
-import { AppRegistry, View, Text, TextInput,StyleSheet, Image, Picker, ScrollView} from 'react-native';
-//import Icon from 'react-native-vector-icons/FontAwesome';
+import {
+        AppRegistry, View, Text, TextInput,StyleSheet, Image,
+        Picker, ScrollView, Dimensions, TouchableOpacity,
+} from 'react-native';
+
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { Field, reduxForm } from 'redux-form';
 import * as common from '../styles/commonstyles';
 import * as registrationstyles from '../styles/registrationform';
 import {syncValidate, asyncValidate, submit} from '../actions/validate';
-import { TextInputWithBorders, KohanaInput } from './common/input';
+import { TextInputWithBorders, KohanaInput, TextInputWithIcons } from './common/input';
 import Button from './common/button';
 import Spinner from './common/spinner';
 import Container from './common/container';
@@ -30,42 +34,47 @@ class Registration extends Component {
   }
 
   handleFormSubmit(props) {
-    const { email, password, business, street, zipcode} = props;
+    const { email, password, business, street, city, state, zipcode} = props;
 
     //Register the user account and Business Details
     this.props.createUser({ email, password});
-    this.props.registerBusiness({business, street, zipcode});
+    this.props.registerBusiness({business, street, city, state, zipcode});
   }
 
   render(){
+
+    let {height, width} = Dimensions.get('window');
 
     const {asyncValidating, handleSubmit, submitting, asyncValidate, validate} = this.props;
 
     return (
       <View style = {registrationstyles.container}>
       <ScrollView keyboardShouldPersistTaps={'handled'}>
+        <View style = {registrationstyles.navbar}>
+          <Text style={registrationstyles.navbarText}>SIGN UP</Text>
+        </View>
         <View style = {registrationstyles.regform}>
 
-          <View style = {[registrationstyles.section, registrationstyles.personal]}>
+          <View style = {[registrationstyles.personal, registrationstyles.section]}>
 
             <Text style = {registrationstyles.headerText}>ADMIN ACCOUNT DETAILS</Text>
 
             <Item>
               <Field
                 name = 'email'
-                component={KohanaInput}
-                label = {'Email Address'}
-                iconName = {'email'}
+                component={TextInputWithIcons}
+                iconName = 'envelope'
+                placeholder = "Email Address"
                 />
             </Item>
 
             <Item>
               <Field
                 name = 'password'
-                component={KohanaInput}
-                label = {'Password'}
+                component={TextInputWithIcons}
+                placeholder = "Password"
                 secureTextEntry
-                iconName = {'lock'}
+                iconName = 'lock'
                 />
             </Item>
 
@@ -77,46 +86,76 @@ class Registration extends Component {
             <Item>
               <Field
                 name = 'business'
-                component={KohanaInput}
-                label = {'Name of Business'}
-                iconName = {'home'}
+                component={TextInputWithIcons}
+                placeholder = "Name of Business"
+                iconName = 'building'
                 />
             </Item>
 
             <Item>
               <Field
                 name = 'street'
-                component={KohanaInput}
-                label = {'Street Address'}
-                iconName = {'streetview'}
+                component={TextInputWithIcons}
+                placeholder = 'Street Address'
+                iconName = 'street-view'
                 />
+            </Item>
+
+
+            <Item style = {{flexDirection: 'row',alignItems: 'center',}}>
+              <Item>
+                <Field
+                  name = 'city'
+                  component={TextInputWithIcons}
+                  placeholder = 'City'
+                  iconName = 'map-marker'
+                  inputStyle = {{width: width * 0.232}}
+                  />
+              </Item>
+
+              <Item>
+                <Field
+                  name = 'state'
+                  component={TextInputWithIcons}
+                  placeholder = 'State'
+                  inputStyle = {{width: width * 0.232}}
+                  iconName = 'map'
+                  />
+              </Item>
             </Item>
 
             <Item>
               <Field
                 name = 'zipcode'
-                component={KohanaInput}
-                label = {'Zipcode | Postal Code'}
-                iconName = {'satellite'}
+                component={TextInputWithIcons}
+                placeholder = 'Zipcode'
+                iconName = 'road'
                 />
             </Item>
-          </View>
 
-          {this.props.loading?
-            <View>
-              <Spinner/>
-            </View>
-            :
-            <View>
-              <Button
-                disabled = {submitting}
-                underlayColor = '#ff8c31'
-                onPress={handleSubmit(this.handleFormSubmit)}
-                buttonStyle ={{alignSelf: 'center', backgroundColor: '#ff8c31'}}
-                >REGISTER
-              </Button>
-            </View>
-          }
+            {this.props.loading?
+              <View>
+                <Spinner/>
+              </View>
+              :
+              <View>
+                <Button
+                  disabled = {submitting}
+                  underlayColor = '#ff8c31'
+                  onPress={handleSubmit(this.handleFormSubmit)}
+                  buttonStyle ={{alignSelf: 'center', backgroundColor: '#1e9c98'}}
+                  textStyle = {{color: '#fff'}}
+                  >REGISTER
+                </Button>
+
+                <TouchableOpacity
+                  onPress = {() => Actions.login()}>
+                  <Text style = {{  height: 30,fontSize: 11, color: '#33cccc',}}> Already have an account? Login</Text>
+                </TouchableOpacity>
+              </View>
+            }
+
+          </View>
         </View>
       </ScrollView>
       </View>

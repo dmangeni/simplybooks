@@ -16,6 +16,7 @@ export function initializeDatabase(){
           user: 0,
           pom: 0,
           som: 0,
+          inventory: 0,
           reporting_and_analytics: 0,
           accounting: 0
         }

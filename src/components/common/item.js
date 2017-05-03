@@ -4,12 +4,13 @@ import { View } from 'react-native';
 
 const propTypes = {
   children: PropTypes.node.isRequired,
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  //style: [],
 };
 
-const defaultProps = {
-  style: {},
-};
+/*const defaultProps = {
+  style: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+};*/
 
 const Item = props => (
   <View style={[styles.container, props.style]}>
@@ -19,16 +20,17 @@ const Item = props => (
 
 const styles = {
   container: {
+    margin: 2,
     /*padding: 5,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
     flexDirection: 'row',
     position: 'relative',*/
-    margin: 5,
+    //margin: 2,
   },
 };
 
-Item.defaultProps = defaultProps;
+//Item.defaultProps = defaultProps;
 Item.propTypes = propTypes;
 
 export default Item;

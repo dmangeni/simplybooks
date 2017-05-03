@@ -50,8 +50,14 @@ const syncValidate = (values) => {
   if (!values.street || values.street.trim() === '') {
     errors.street = 'Street Address is Required'
   }
+  if (!values.city || values.city.trim() === '') {
+    errors.city = 'Name of City is Required'
+  }
+  if (!values.state || values.state.trim() === '') {
+    errors.state = 'Name of State is Required'
+  }
   if (!values.zipcode || values.zipcode.trim() === '') {
-    errors.zipcode = 'Zipcode is Required'
+    errors.zipcode = 'Zipcode | Postal Code is Required'
   }
 
   return errors

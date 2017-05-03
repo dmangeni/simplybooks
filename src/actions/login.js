@@ -68,13 +68,12 @@ export const login = ({email, password}) => {
         })
         dispatch({type: types.LOGIN_SUCCESS, payload: newMap});
 
+        //Navigate to home page
+        Actions.hometabs();
+
         //Reset the form
         dispatch(reset('signin'));
 
-        //Alert.alert('Login', 'Login was successful');
-
-        //Navigate to home page
-        Actions.hometabs();
 
       }).catch((error) => {
 
@@ -156,12 +155,14 @@ export const createUser = ({email, password}) => {
   }
 }
 
-export const registerBusiness = ({business, street, zipcode}) => {
+export const registerBusiness = ({business, street, city, state, zipcode}) => {
   return(dispatch) => {
     dispatch({type: types.REGISTER_BUSINESS_REQUEST})
     let userRef = firebase.database().ref("user").push().set({
       'businessName': business,
       'streetaddress': street,
+      'city': city,
+      'state': state,
       'zipcode': zipcode,
     })
     dispatch({type: types.REGISTER_BUSINESS_SUCCESS})

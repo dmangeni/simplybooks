@@ -23,14 +23,26 @@ const commonstyles =  StyleSheet.create({
   },
   textinputWithBorders:{
     textAlign: 'center',
-    width: width * .7,
-    height: Platform.OS == 'android' ? 40 : 20,
+    width: width * .6,
+    height: Platform.OS == 'android' ? 35 : 20,
     borderWidth:2,
-    margin: 5,
+    margin: 2,
     borderColor:'black',
     borderRadius: 15,
     //color: 'black',
     //backgroundColor:'transparent',
+  },
+  textInputWithoutBorders:{
+    textAlign: 'center',
+    width: width * .7,
+    height: Platform.OS == 'android' ? 30 : 20,
+    borderBottomWidth: 2,
+    borderBottomColor: '#1e9c98',
+    margin: 5,
+    backgroundColor:'white',
+    padding: 0,
+    //borderColor:'#1e9c98',
+    //borderRadius: 15,
   },
   button: {
     width: width * .7,
@@ -45,6 +57,8 @@ const commonstyles =  StyleSheet.create({
   buttonText:{
     alignSelf:'center',
     color:'#1e9c98',
+    fontSize: 14,
+    //fontFamily: 'sans-serif-light',
   },
   touchablehighlight:{
     borderRadius: 25,

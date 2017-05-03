@@ -4,15 +4,24 @@ import { Platform, StyleSheet, Dimensions } from 'react-native';
 let {height, width} = Dimensions.get('window');
 
 const loginstyles =  StyleSheet.create({
+  container:{
+    flex: 1,
+    //padding: 10,
+    //margin: 10,
+    //borderWidth: 2,
+    //borderColor: 'black',
+  },
   logoContainer:{
     flex: 0.3,
     alignItems: 'center',
+    marginTop: 20,
   },
   loginform:{
-    padding: 20,
+    padding: 5,
     flex: 0.7,
     flexDirection: 'column',
-    alignItems: 'center',
+    marginTop: height * 0.15,
+
   },
   boxContainer:{
     flex: 1,
@@ -24,9 +33,6 @@ const loginstyles =  StyleSheet.create({
   linksContainer:{
     flex: 0.4,
     margin: 10,
-
-    //borderWidth: 2,
-    //borderColor: 'black',
   },
   quicklinksbox:{
     flex: 1,
@@ -55,13 +61,13 @@ const loginstyles =  StyleSheet.create({
   },
   fieldView:{
     flex: 1,
-    minWidth: width * 0.8,
+    minWidth: width * 0.7,
   },
   hideoTextBox:{
     borderWidth: 2,
     borderColor:'#006c68',
-    borderTopRightRadius: 20,
-    borderBottomRightRadius: 20,
+    //borderTopRightRadius: 20,
+    //borderBottomRightRadius: 20,
     backgroundColor:'transparent',
   },
   loginbutton:{

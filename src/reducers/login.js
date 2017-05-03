@@ -40,7 +40,7 @@ export const auth = lib.createReducer({},{
 
   [types.INITIALIZE_DATABASE_SUCCESS](state, action){
 
-    console.log(action.data)
+    //console.log(action.data)
 
     let newMap = Map({
       databaseRef: action.data

@@ -16,6 +16,7 @@ import { Actions,ActionConst } from 'react-native-router-flux';
 
 
 
+
 const propTypes = {
   authError: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
@@ -50,14 +51,14 @@ class Login extends Component {
 
     return (
 
-      <View style ={common.container}>
+      <View style ={loginstyles.container}>
 
-      {/*}  <Image
+      {/* <Image
           source = {require('../gallery/image4.jpeg')}
           style = {loginstyles.loginBackgroundImage}>*/}
         <ScrollView style={common.container} keyboardShouldPersistTaps={'handled'}>
         <View style={[loginstyles.logoContainer]}>
-
+          <Image source = {require('../gallery/image1.png')}/>
         </View>
 
         <View style = {[loginstyles.loginform]}>
@@ -99,6 +100,8 @@ class Login extends Component {
                   <Button
                     disabled = {submitting}
                     underlayColor = '#ff8c31'
+                    buttonStyle = {{backgroundColor: '#006c68'}}
+                    textStyle = {{color: 'white'}}
                     onPress={handleSubmit(this.handleFormSubmit)}>LOG IN
                   </Button>
                 </View>
@@ -121,7 +124,9 @@ class Login extends Component {
             </View>
         </View>
           </ScrollView>
-          {/*}{this.props.children}</Image>*/}
+          {/*{this.props.children}</Image>
+          placeholderTextColor= 'white' //Add to the textboxes*/}
+
       </View>
     );
   }
